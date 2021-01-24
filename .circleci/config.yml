@@ -21,5 +21,6 @@ jobs:
 workflows:
   create_infrastructure:
     jobs:
-      - create_infrastructure
+      - create_infrastructure:
+          context: udacity-items
 
