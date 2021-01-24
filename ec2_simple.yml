@@ -5,7 +5,7 @@ Resources:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
       ImageId: 'ami-0be2609ba883822ec' # you may need to find out what instance types are available in your region - use https://cloud-images.ubuntu.com/locator/ec2/
-      KeyName: udacity
+      # KeyName: udacity
       Tags:
         - Key: Name
           Value: Test-VM
