@@ -1,0 +1,25 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+defaults: &defaults
+  docker:
+    - image: amazon/aws-cli
+  working_directory: ~/projects
+
+jobs:
+  create_infrastructure:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Deploy cloudformation
+          command: |
+            aws cloudformation deploy \
+            --template-file ec2_simple.yml \
+            --stack-name cicdstack
+
+workflows:
+  create_infrastructure:
+    jobs:
+      - create_infrastructure
+

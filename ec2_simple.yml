@@ -1,0 +1,21 @@
+Resources:
+  Ec2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      SecurityGroups:
+        - !Ref InstanceSecurityGroup
+      ImageId: 'ami-0be2609ba883822ec' # you may need to find out what instance types are available in your region - use https://cloud-images.ubuntu.com/locator/ec2/
+      KeyName: udacity
+      Tags:
+        - Key: Name
+          Value: Test-VM
+      InstanceType: t2.micro
+  InstanceSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
